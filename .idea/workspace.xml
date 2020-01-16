@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ccd07b1e-a72b-4e16-a010-aad2b766d158" name="Default Changelist" comment="" />
+    <list default="true" id="ccd07b1e-a72b-4e16-a010-aad2b766d158" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sketch.js" beforeDir="false" afterPath="$PROJECT_DIR$/sketch.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,7 +17,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1WS0LZN58XNxArRS3tytbz9oKMt" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -24,6 +31,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="ignore_missing_gitignore" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -57,7 +65,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1579127634027</updated>
-      <workItem from="1579127637561" duration="3378000" />
+      <workItem from="1579127637561" duration="3709000" />
+      <workItem from="1579161247465" duration="3140000" />
+      <workItem from="1579165243802" duration="1791000" />
     </task>
     <servers />
   </component>
@@ -73,5 +83,9 @@
       <screen x="64" y="23" width="1376" height="877" />
     </state>
     <state x="253" y="100" key="SettingsEditor/64.23.1376.877@64.23.1376.877" timestamp="1579130713940" />
+    <state x="-567" y="-822" width="670" height="676" key="search.everywhere.popup" timestamp="1579165510397">
+      <screen x="-1192" y="-1057" width="1920" height="1057" />
+    </state>
+    <state x="-567" y="-822" width="670" height="676" key="search.everywhere.popup/64.23.1376.877/728.-1057.1920.1057/-1192.-1057.1920.1057@-1192.-1057.1920.1057" timestamp="1579165510397" />
   </component>
 </project>
