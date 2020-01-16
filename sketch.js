@@ -145,7 +145,7 @@ function getIndex(i, j) {
   }
 
   return j + i * cols;
-};
+}
 
 function removeWalls (current, next) {
   const x = current.i - next.i;
@@ -167,6 +167,4 @@ function removeWalls (current, next) {
     current.walls.bottom = false;
     next.walls.top = false
   }
-};
-
-
+}
