@@ -1,7 +1,8 @@
 let cols;
 let rows;
-const size = 80;
+const size = 20;
 const grid = [];
+const stack = [];
 
 let current;
 
@@ -17,13 +18,14 @@ function setup() {
     }
   }
 
-  current = grid[23];
+  current = grid[0];
   current.visited = true;
+  current.current = true;
 }
 
 function draw() {
   background(51);
-  frameRate(1);
+  frameRate(100);
 
   for (let i = 0; i < grid.length; i++) {
     grid[i].show();
@@ -31,14 +33,38 @@ function draw() {
     if (grid[i].visited) {
       grid[i].highlight(100);
     }
+
+    if(grid[i].current) {
+      grid[i].highlightCurrent();
+    }
   }
 
+  // Check for available neighbors;
   const availableNeighbors = current.checkNeighbors();
-  const next = random(availableNeighbors);
-  console.log(next);
 
-  next.visited = true;
-  current = next;
+  // Pick random neighbor;
+  let next = random(availableNeighbors);
+
+  current.current = false;
+
+  //If neighbor is available pick him otherwise take next from stack;
+  if (next) {
+    // push next to stack;
+    stack.push(next);
+    next.visited = true;
+
+    // remove walls between current and next;
+    removeWalls(current, next);
+
+    current = next;
+  } else if (stack.length) {
+    current = stack.pop();
+  } else {
+    console.log('Maze generated!');
+    noLoop();
+  }
+
+  current.current = true;
 }
 
 function Cell(i, j) {
@@ -51,6 +77,7 @@ function Cell(i, j) {
     left: true
   };
   this.visited = false;
+  this.current = false;
 
   const x = this.i * size;
   const y = this.j * size;
@@ -74,30 +101,23 @@ function Cell(i, j) {
     }
   };
 
+  this.highlightCurrent = () => {
+    this.highlight(63, 224, 101);
+  };
+
   this.highlight = (...args) => {
     fill(...args);
-    rect(x, y, size, size);
+    stroke(100);
+    rect(x + 1, y + 1, size - 2, size - 2);
   };
 
   this.checkNeighbors = () => {
     let  neighbors = [];
 
-    console.log(this.i + ' ' + this.j);
-
-    console.log('top: ', getIndex(this.i, this.j - 1));
-    console.log('right: ', getIndex(this.i + 1, this.j ));
-    console.log('bottom: ', getIndex(this.i, this.j + 1));
-    console.log('left: ', getIndex(this.i - 1, this.j));
-
     const top = grid[getIndex(this.i, this.j - 1)];
     const right = grid[getIndex(this.i + 1, this.j )];
     const bottom = grid[getIndex(this.i, this.j + 1)];
     const left = grid[getIndex(this.i - 1, this.j)];
-
-    // top.highlight(66, 135, 245); // blue
-    // right.highlight(63, 224, 101); // green
-    // bottom.highlight(209, 54, 103); // red
-    // left.highlight(204, 139, 47); // orange
 
     if (top && !top.visited) {
       neighbors.push(top);
@@ -125,6 +145,28 @@ function getIndex(i, j) {
   }
 
   return j + i * cols;
-}
+};
+
+function removeWalls (current, next) {
+  const x = current.i - next.i;
+
+  if (x === 1) {
+    current.walls.left = false;
+    next.walls.right = false;
+  } else if ( x === -1) {
+    current.walls.right = false;
+    next.walls.left = false;
+  }
+
+  const y = current.j - next.j;
+
+  if (y === 1) {
+    current.walls.top = false;
+    next.walls.bottom = false
+  } else if (y === -1) {
+    current.walls.bottom = false;
+    next.walls.top = false
+  }
+};
 
 
